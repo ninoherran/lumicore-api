@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Endpoint", "Lumicore.Endpoint\Lumicore.Endpoint.csproj", "{81388E30-CC46-46D5-B27A-2A8460AABB07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Test", "Lumicore.Test\Lumicore.Test.csproj", "{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+@Lumicore.Endpoint_HostAddress = http://localhost:5294
+
+GET {{Lumicore.Endpoint_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
