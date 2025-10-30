@@ -1,3 +1,7 @@
+using Lumicore.Domain.core.ioc;
+
+Locator.Load(new ProdInjector());
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

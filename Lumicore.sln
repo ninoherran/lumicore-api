@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Endpoint", "Lumico
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Test", "Lumicore.Test\Lumicore.Test.csproj", "{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Domain", "Lumicore.Domain\Lumicore.Domain.csproj", "{C46507B6-4569-42F6-81E1-FD18D22740EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Infra", "Lumicore.Infra\Lumicore.Infra.csproj", "{9A61625B-02F9-47FA-ABC0-A8C89C239923}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
