@@ -1,4 +1,5 @@
-﻿using Lumicore.Domain.user.repository;
+﻿using Lumicore.Domain.user;
+using Lumicore.Domain.user.repository;
 
 namespace Lumicore.Domain.core.ioc;
 
@@ -10,6 +11,12 @@ public class NoneInjector : IInjector
     }
 
     public UserRepository UserRepository()
+    {
+        throw new NotImplementedException();
+    }
+
+
+    public UserService UserService()
     {
         throw new NotImplementedException();
     }

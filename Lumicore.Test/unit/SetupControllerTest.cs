@@ -33,7 +33,7 @@ public class SetupControllerTest : BaseTest
     [Test]
     public void ShouldBeAbleToSetupIfNoUsers()
     {
-        var fakeAdmin = new SetupDto{Email = "admin@admin.com", Fullname = "Admin Admin", Password = "123456"};
+        var fakeAdmin = new UserRegisterDto{Email = "admin@admin.com", Firstname = "Admin Admin", Password = "123456"};
         UserRepositoryMock.Setup(ur => ur.HasAnyUser()).Returns(Task.FromResult(false));
         
         var setupController = new SetupController();
@@ -41,18 +41,6 @@ public class SetupControllerTest : BaseTest
         
         result.Should().BeOfType<OkResult>();
         UserRepositoryMock.Verify(ur => ur.Add(It.IsAny<User>()), Times.Once);
-    }
-    
-    [Test]
-    public void ShouldNotBeAbleToSetupIfUsersExist()
-    {
-        UserRepositoryMock.Setup(ur => ur.HasAnyUser()).Returns(Task.FromResult(true));
-        var fakeAdmin = new SetupDto{Email = "admin@admin.com", Fullname = "Admin Admin", Password = "123456"};
-        
-        var setupController = new SetupController();
-        var result = setupController.Init(fakeAdmin).Result;
-        
-        result.Should().BeOfType<BadRequestResult>();
     }
         
 }

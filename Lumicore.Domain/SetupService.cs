@@ -1,4 +1,5 @@
 ﻿using Lumicore.Domain.core.ioc;
+using Lumicore.Domain.core.errors;
 using Lumicore.Domain.user;
 
 namespace Lumicore.Domain;
@@ -10,13 +11,13 @@ public class SetupService
         return await Locator.UserRepository().HasAnyUser();
     }
 
-    public async Task Init(string email, string fullname, string password)
+    public async Task Init(string email, string firstname, string lastname, string password)
     {
         var hasAnyUser = await Locator.UserRepository().HasAnyUser();
+
         if (hasAnyUser)
-            throw new Exception("Setup already completed");
+            throw DomainErrors.SetupAlreadyCompleted();
         
-        var user = new User(email, fullname, password);
-        Locator.UserRepository().Add(user);
+        Locator.UserService().CreateUserAdmin(email, firstname, lastname, password);
     }
 }

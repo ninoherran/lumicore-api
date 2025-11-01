@@ -1,4 +1,5 @@
-﻿using Lumicore.Domain.user.repository;
+﻿using Lumicore.Domain.user;
+using Lumicore.Domain.user.repository;
 
 namespace Lumicore.Domain.core.ioc;
 
@@ -8,6 +9,8 @@ public static class Locator
 
     public static SetupService SetupService() => _injector.SetupService();
     public static UserRepository UserRepository() => _injector.UserRepository();
+    public static UserService UserService() => _injector.UserService();
+
 
     public static void Load(IInjector injector)
     {

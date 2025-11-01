@@ -1,12 +1,13 @@
 ﻿using Lumicore.Domain.core.ioc;
 using Lumicore.Endpoint.controller.dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lumicore.Endpoint.controller;
 
 [ApiController]
 [Route("[controller]")]
-public class SetupController : ControllerBase
+public class SetupController : BaseApiController
 {
     [HttpGet("is-init")]
     public async Task<IActionResult> IsInit()
@@ -20,15 +21,18 @@ public class SetupController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Init([FromBody] SetupDto setupDto)
+    public async Task<IActionResult> Init([FromBody] UserRegisterDto userRegisterDto)
     {
-        try
-        {
-            await Locator.SetupService().Init(setupDto.Email, setupDto.Fullname, setupDto.Password);
-            return Ok();
-        }catch
-        {
-            return BadRequest();
-        }
+        await Locator.SetupService().Init(userRegisterDto.Email, userRegisterDto.Firstname, userRegisterDto.Lastname, userRegisterDto.Password);
+        return Ok();
+    }
+
+    [Authorize]
+    [HttpGet]
+    public IActionResult Get()
+    {
+        Console.WriteLine(ConnectedUser?.Email);
+        
+        return Ok();
     }
 }

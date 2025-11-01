@@ -1,7 +1,9 @@
 ﻿using Lumicore.Domain;
 using Lumicore.Domain.core.ioc;
+using Lumicore.Domain.user;
 using Lumicore.Domain.user.repository;
 using Moq;
+using NUnit.Framework;
 
 namespace Lumicore.Test;
 
@@ -14,6 +16,15 @@ public class BaseTest
 
     public BaseTest()
     {
+        Locator.Load(Injector);
+    }
+
+    [SetUp]
+    public void BeforeEach()
+    {
+        UserRepositoryMock.Reset();
+        SetupServiceMock.Reset();
+        // Ensure Locator is pointing to the test injector for each test
         Locator.Load(Injector);
     }
 }
@@ -31,5 +42,11 @@ public class TestInjector : IInjector
     public UserRepository UserRepository()
     {
         return UserRepositoryMock.Object;
+    }
+
+
+    public UserService UserService()
+    {
+        return new();   
     }
 }
