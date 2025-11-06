@@ -22,7 +22,7 @@ public class AuthController(IJwtTokenFactory tokenFactory) : BaseApiController
 
         var token = tokenFactory.CreateToken(user);
 
-        return Ok(token);
+        return Ok(new{ token});
     }
 
     [Authorize]
