@@ -9,7 +9,7 @@ public class UserRepository
     {
         var statement = "INSERT INTO users (id, email, firstname, lastname, password, is_admin) Values($1, $2, $3, $4, $5, $6)";
         
-        new PgCommand().ExecuteNonQuery(statement, PgParam.Guid(user.Id), PgParam.Text(user.Email), PgParam.Text(user.Firstname), PgParam.Text(user.Lastname), PgParam.Text(user.PasswordHash), PgParam.Bool(user.IsAdmin));
+        new PgCommand().ExecuteNonQuery(statement, PgParam.Guid(user.Id), PgParam.Text(user.Email), PgParam.Text(user.FirstName), PgParam.Text(user.LastName), PgParam.Text(user.PasswordHash), PgParam.Bool(user.IsAdmin));
     }
 
     public virtual async Task<bool> HasAnyUser()

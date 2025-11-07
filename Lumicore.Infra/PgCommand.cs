@@ -5,12 +5,11 @@ namespace Lumicore.Infra;
 
 public class PgCommand
 {
-    private readonly string connectionString =
-        "Host=ep-broad-river-abth5ezq-pooler.eu-west-2.aws.neon.tech; Username=neondb_owner; Password=npg_nUFvuarpO9G6; Database=neondb;";
+    private readonly string _connectionString = DotEnv.Get("DB_STRING");
 
     public async void ExecuteNonQuery(string statement, params PgParam[] args)
     {
-        await using var dataSource = NpgsqlDataSource.Create(connectionString);
+        await using var dataSource = NpgsqlDataSource.Create(_connectionString);
         await using var command = dataSource.CreateCommand(statement);
 
         foreach (var arg in args)
@@ -26,7 +25,7 @@ public class PgCommand
 
     public async Task<object[]> ExecuteDataRow(string statement, params PgParam[] args)
     {
-        await using var dataSource = NpgsqlDataSource.Create(connectionString);
+        await using var dataSource = NpgsqlDataSource.Create(_connectionString);
         await using var initialCommand = dataSource.CreateCommand(statement);
         AddParams(initialCommand, args, out var command);
 
@@ -47,7 +46,7 @@ public class PgCommand
 
     public async Task<object?> ExecuteScalar(string statement, params PgParam[] args)
     {
-        await using var dataSource = NpgsqlDataSource.Create(connectionString);
+        await using var dataSource = NpgsqlDataSource.Create(_connectionString);
         await using var command = dataSource.CreateCommand(statement);
         foreach (var arg in args)
         {

@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Domain", "Lumicore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Infra", "Lumicore.Infra\Lumicore.Infra.csproj", "{9A61625B-02F9-47FA-ABC0-A8C89C239923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Database", "Lumicore.Database\Lumicore.Database.csproj", "{B3E45018-1EBB-486D-98B3-F322B32C78E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A61625B-02F9-47FA-ABC0-A8C89C239923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -24,6 +24,15 @@ public class AuthController(IJwtTokenFactory tokenFactory) : BaseApiController
 
         return Ok(new{ token});
     }
+    
+    [AllowAnonymous]
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] UserRegisterDto userRegisterDto)
+    {
+        var user = await Locator.UserService().CreateUser(userRegisterDto.Email, userRegisterDto.Firstname, userRegisterDto.Lastname, userRegisterDto.Password);
+        
+        return Ok(user.Id);
+    }
 
     [Authorize]
     [HttpGet("me")]
@@ -33,8 +42,9 @@ public class AuthController(IJwtTokenFactory tokenFactory) : BaseApiController
         {
             Id = ConnectedUser.Id.ToString(),
             Email = ConnectedUser.Email,
-            Firstname = ConnectedUser.Firstname,
-            Lastname = ConnectedUser.Lastname
+            FirstName = ConnectedUser.FirstName,
+            LastName = ConnectedUser.LastName,
+            IsAdmin = ConnectedUser.IsAdmin
         };
         
         return Ok(user);   

@@ -20,13 +20,4 @@ public class UserController : BaseApiController
         
         return Ok();
     }
-
-    [AllowAnonymous]
-    [HttpPost("create")]
-    public async Task<IActionResult> Get([FromBody] UserRegisterDto userRegisterDto)
-    {
-        var user = await Locator.UserService().CreateUser(userRegisterDto.Email, userRegisterDto.Firstname, userRegisterDto.Lastname, userRegisterDto.Password);
-        
-        return Ok(user.Id);
-    }
 }

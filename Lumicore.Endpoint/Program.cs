@@ -2,12 +2,15 @@ using System.Text;
 using Lumicore.Domain.core.ioc;
 using Lumicore.Endpoint.auth;
 using Lumicore.Endpoint.middleware;
+using Lumicore.Infra;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 Locator.Load(new ProdInjector());
 
 var builder = WebApplication.CreateBuilder(args);
+
+DotEnv.Load(".env");
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddSingleton<IJwtTokenFactory, JwtTokenFactory>();
