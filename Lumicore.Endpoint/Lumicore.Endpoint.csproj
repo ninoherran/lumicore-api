@@ -29,4 +29,8 @@
       <ProjectReference Include="..\Lumicore.Domain\Lumicore.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="controller\user\dto\" />
+    </ItemGroup>
+
 </Project>

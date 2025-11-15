@@ -1,13 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using FluentAssertions;
-using Lumicore.Domain.core.errors;
-using Lumicore.Domain.user;
-using Lumicore.Endpoint.auth;
-using Lumicore.Endpoint.controller;
-using Lumicore.Endpoint.controller.dto;
+﻿using FluentAssertions;
 using Lumicore.Endpoint.controller.user;
-using Lumicore.Endpoint.controller.user.dto;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
@@ -20,11 +12,10 @@ public class UserControllerTest : BaseTest
     public void Whitelist_ShouldAddEmail_AndReturnOk()
     {
         var controller = new UserController();
-        var dto = new WhitelistDto { Email = "whitelist@acme.com" };
 
-        var result = controller.Post(dto);
+        var result = controller.AddToWhitelist("whitelist@nino.com");
 
         result.Should().BeOfType<OkResult>();
-        UserRepositoryMock.Verify(r => r.AddToWhiteList("whitelist@acme.com"), Times.Once);
+        UserRepositoryMock.Verify(r => r.AddToWhiteList("whitelist@nino.com"), Times.Once);
     }
 }

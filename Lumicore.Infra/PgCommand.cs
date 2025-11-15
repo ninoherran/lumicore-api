@@ -67,6 +67,29 @@ public class PgCommand
 
         finalCommand = command;
     }
+
+    public async Task<ICollection<object[]>> ExecuteDataTable(string statement, params PgParam[] args)
+    {
+        await using var dataSource = NpgsqlDataSource.Create(_connectionString);
+        await using var initialCommand = dataSource.CreateCommand(statement);
+        AddParams(initialCommand, args, out var command);
+
+        await using var reader = await command.ExecuteReaderAsync();
+
+        var result = new List<object[]>();
+
+        while (await reader.ReadAsync())
+        {
+            object[] row = new object[reader.FieldCount];
+            for (var i = 0; i < reader.FieldCount; i++)
+            {
+                row[i] = reader[i];
+            }
+            result.Add(row);
+        }
+
+        return result;
+    }
 }
 
 public class PgParam

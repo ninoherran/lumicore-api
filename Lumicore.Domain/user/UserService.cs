@@ -21,6 +21,7 @@ public class UserService
         
         var user = new User(email, firstname, lastname, password);
         Locator.UserRepository().Add(user);
+        Locator.UserRepository().DeleteFromWhitelist(email);
 
         return user;
     }
@@ -37,5 +38,21 @@ public class UserService
     public void AddToWhiteList(string email)
     {
         Locator.UserRepository().AddToWhiteList(email);
+    }
+
+    public async Task<ICollection<User>> GetAll()
+    {
+        var users = await Locator.UserRepository().GetAll();
+        return users;
+    }
+
+    public Task<IEnumerable<string>> GetWhiteList()
+    {
+        return Locator.UserRepository().GetWhiteList();
+    }
+
+    public void DeleteFromWhitelist(string email)
+    {
+        Locator.UserRepository().DeleteFromWhitelist(email);
     }
 }

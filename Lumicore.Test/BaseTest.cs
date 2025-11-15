@@ -1,5 +1,6 @@
 ﻿using Lumicore.Domain;
 using Lumicore.Domain.core.ioc;
+using Lumicore.Domain.role;
 using Lumicore.Domain.user;
 using Lumicore.Domain.user.repository;
 using Moq;
@@ -24,15 +25,17 @@ public class BaseTest
     {
         UserRepositoryMock.Reset();
         SetupServiceMock.Reset();
-        // Ensure Locator is pointing to the test injector for each test
         Locator.Load(Injector);
     }
 }
 
 public class TestInjector : IInjector
 {
+    public Mock<UserService> UserServiceMock { get; set; } = new() { CallBase = false };
+    public Mock<RoleService> RoleServiceMock { get; set; } = new() { CallBase = false };
     public Mock<UserRepository> UserRepositoryMock { get; set; } = new() { CallBase = false };
     public Mock<SetupService> SetupServiceMock { get; set; } = new() { CallBase = false };
+    public Mock<RoleRepository> RoleRepositoryMock { get; set; } = new() { CallBase = false };
 
     public SetupService SetupService()
     {
@@ -45,8 +48,8 @@ public class TestInjector : IInjector
     }
 
 
-    public UserService UserService()
-    {
-        return new();   
-    }
+    public UserService UserService() => UserServiceMock.Object;
+
+    public RoleService RoleService() => RoleServiceMock.Object;
+    public RoleRepository RoleRepository() => RoleRepositoryMock.Object;
 }

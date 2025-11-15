@@ -38,7 +38,7 @@ public class AuthController(IJwtTokenFactory tokenFactory) : BaseApiController
     [HttpGet("me")]
     public IActionResult Get()
     {
-        var user = new MeDto()
+        var user = new UserDto()
         {
             Id = ConnectedUser.Id.ToString(),
             Email = ConnectedUser.Email,

@@ -2,13 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Endpoint", "Lumicore.Endpoint\Lumicore.Endpoint.csproj", "{81388E30-CC46-46D5-B27A-2A8460AABB07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Test", "Lumicore.Test\Lumicore.Test.csproj", "{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Domain", "Lumicore.Domain\Lumicore.Domain.csproj", "{C46507B6-4569-42F6-81E1-FD18D22740EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Infra", "Lumicore.Infra\Lumicore.Infra.csproj", "{9A61625B-02F9-47FA-ABC0-A8C89C239923}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Database", "Lumicore.Database\Lumicore.Database.csproj", "{B3E45018-1EBB-486D-98B3-F322B32C78E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumicore.Test", "Lumicore.Test\Lumicore.Test.csproj", "{C2CC6F57-6EC4-4804-AD69-2E57B7417B8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +20,6 @@ Global
 		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81388E30-CC46-46D5-B27A-2A8460AABB07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01ECCAC3-F655-4FC7-9F35-00ACC5629F24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46507B6-4569-42F6-81E1-FD18D22740EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -36,5 +32,9 @@ Global
 		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3E45018-1EBB-486D-98B3-F322B32C78E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CC6F57-6EC4-4804-AD69-2E57B7417B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CC6F57-6EC4-4804-AD69-2E57B7417B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CC6F57-6EC4-4804-AD69-2E57B7417B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CC6F57-6EC4-4804-AD69-2E57B7417B8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

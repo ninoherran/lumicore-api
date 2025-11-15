@@ -7,32 +7,37 @@ public class UserRepository
 {
     public virtual void Add(User user)
     {
-        var statement = "INSERT INTO users (id, email, firstname, lastname, password, is_admin) Values($1, $2, $3, $4, $5, $6)";
-        
-        new PgCommand().ExecuteNonQuery(statement, PgParam.Guid(user.Id), PgParam.Text(user.Email), PgParam.Text(user.FirstName), PgParam.Text(user.LastName), PgParam.Text(user.PasswordHash), PgParam.Bool(user.IsAdmin));
+        var statement =
+            "INSERT INTO users (id, email, firstname, lastname, password, is_admin) Values($1, $2, $3, $4, $5, $6)";
+
+        new PgCommand().ExecuteNonQuery(statement, PgParam.Guid(user.Id), PgParam.Text(user.Email),
+            PgParam.Text(user.FirstName), PgParam.Text(user.LastName), PgParam.Text(user.PasswordHash),
+            PgParam.Bool(user.IsAdmin));
     }
 
     public virtual async Task<bool> HasAnyUser()
     {
         var statement = "SELECT CASE WHEN EXISTS(SELECT 1 FROM users LIMIT 1) THEN 0 ELSE 1 END";
         var result = (int)(await new PgCommand().ExecuteScalar(statement) ?? 0);
-        
+
         return result != 1;
     }
 
     public virtual async Task<User> GetByEmail(string email)
     {
-        const string statement = "SELECT id, email, firstname, lastname, password, is_admin FROM users WHERE email = $1 LIMIT 1";
+        const string statement =
+            "SELECT id, email, firstname, lastname, password, is_admin FROM users WHERE email = $1 LIMIT 1";
         var row = await new PgCommand().ExecuteDataRow(statement, PgParam.Text(email));
-        
+
         return CreateUserFromRow(row);
     }
 
     public async Task<User> GetById(Guid id)
     {
-        const string statement = "SELECT id, email, firstname, lastname, password, is_admin FROM users WHERE id = $1 LIMIT 1";
+        const string statement =
+            "SELECT id, email, firstname, lastname, password, is_admin FROM users WHERE id = $1 LIMIT 1";
         var row = await new PgCommand().ExecuteDataRow(statement, PgParam.Guid(id));
-        
+
         return CreateUserFromRow(row);
     }
 
@@ -54,7 +59,29 @@ public class UserRepository
     {
         var statement = "SELECT CASE WHEN EXISTS(SELECT 1 FROM whitelist where email = $1) THEN 0 ELSE 1 END";
         var result = (int)(await new PgCommand().ExecuteScalar(statement, PgParam.Text(email)) ?? 0);
-        
+
         return result != 1;
+    }
+
+    public virtual async Task<ICollection<User>> GetAll()
+    {
+        var statement = "SELECT * from users;";
+        var result = await new PgCommand().ExecuteDataTable(statement);
+
+        return result.Select(row => CreateUserFromRow(row)).ToList();
+    }
+
+    public async Task<IEnumerable<string>> GetWhiteList()
+    {
+        var statement = "SELECT * from whitelist;";
+        var result = await new PgCommand().ExecuteDataTable(statement);
+        
+        return result.Select(row => (string)row[0]);
+    }
+
+    public void DeleteFromWhitelist(string email)
+    {
+        var statement = "DELETE FROM whitelist WHERE email = $1";
+        new PgCommand().ExecuteNonQuery(statement, PgParam.Text(email));
     }
 }

@@ -5,10 +5,10 @@ using Lumicore.Endpoint.controller.dto;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace Lumicore.Test.unit;
+namespace Lumicore.Test.unit.setup.isInit;
 
 [TestFixture]
-public class SetupControllerTest : BaseTest
+public class IsInitTest : BaseTest
 {
     [Test]
     public void ShouldReturnBadRequestIfSetupNotCompleted()
@@ -42,5 +42,24 @@ public class SetupControllerTest : BaseTest
         result.Should().BeOfType<OkResult>();
         UserRepositoryMock.Verify(ur => ur.Add(It.IsAny<User>()), Times.Once);
     }
+
+    [Test]
+    public void CreatedUserShouldBeAdmin()
+    {
+        var fakeAdmin = new UserRegisterDto{Email = "admin@admin.com", Firstname = "Admin", Lastname = "Admin", Password = "123456"};
+        User createdUser = null;
+        UserRepositoryMock.Setup(ur => ur.HasAnyUser()).Returns(Task.FromResult(false));
+        UserRepositoryMock.Setup(ur => ur.Add(It.IsAny<User>()))
+            .Callback<User>(u => createdUser = u);
         
+        var setupController = new SetupController();
+        var result = setupController.Init(fakeAdmin).Result;
+        
+        result.Should().BeOfType<OkResult>();
+        createdUser.IsAdmin.Should().BeTrue();
+        createdUser.Email.Should().Be(fakeAdmin.Email);
+        createdUser.FirstName.Should().Be(fakeAdmin.Firstname);
+        createdUser.LastName.Should().Be(fakeAdmin.Lastname);
+        createdUser.PasswordHash.Should().NotBeNullOrEmpty();
+    }
 }

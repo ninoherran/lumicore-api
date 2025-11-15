@@ -2,7 +2,7 @@
 using DbUp;
 using Lumicore.Infra;
 
-string? envPath = args.Length > 0 ? args[0] : FindEnvUpwards();
+string? envPath = "../../../../Lumicore.Endpoint/.env";
 if (!string.IsNullOrWhiteSpace(envPath))
 {
     try
@@ -20,7 +20,7 @@ else
     Console.WriteLine("No .env file found automatically. You can pass a path as the first argument.");
 }
 
-var connectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING");
+var connectionString = Environment.GetEnvironmentVariable("DB_STRING");
 if (string.IsNullOrWhiteSpace(connectionString))
 {
     Console.Error.WriteLine("Environment variable 'POSTGRES_CONNECTION_STRING' is not set.");

@@ -1,4 +1,5 @@
-﻿using Lumicore.Domain.user;
+﻿using Lumicore.Domain.role;
+using Lumicore.Domain.user;
 using Lumicore.Domain.user.repository;
 
 namespace Lumicore.Domain.core.ioc;
@@ -16,4 +17,8 @@ public static class Locator
     {
         _injector = injector;
     }
+
+    public static RoleService RoleService() => _injector.RoleService();
+
+    public static RoleRepository RoleRepository() => _injector.RoleRepository();
 }

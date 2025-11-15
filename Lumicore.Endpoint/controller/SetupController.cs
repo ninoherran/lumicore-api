@@ -24,14 +24,6 @@ public class SetupController : BaseApiController
     public async Task<IActionResult> Init([FromBody] UserRegisterDto userRegisterDto)
     {
         await Locator.SetupService().Init(userRegisterDto.Email, userRegisterDto.Firstname, userRegisterDto.Lastname, userRegisterDto.Password);
-        return Ok();
-    }
-
-    [Authorize]
-    [HttpGet]
-    public IActionResult Get()
-    {
-        Console.WriteLine(ConnectedUser?.Email);
         
         return Ok();
     }
